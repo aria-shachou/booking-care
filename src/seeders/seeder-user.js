@@ -3,6 +3,16 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
+    // email: DataTypes.STRING,
+    //   password: DataTypes.STRING,
+    //   firstName: DataTypes.STRING,
+    //   lastName: DataTypes.STRING,
+    //   address: DataTypes.STRING,
+    //   phoneNumber: DataTypes.STRING,
+    //   gender: DataTypes.BOOLEAN,
+    //   image: DataTypes.STRING,
+    //   roleId: DataTypes.STRING,
+    //   positionId: DataTypes.STRING,
     return queryInterface.bulkInsert("Users", [
       {
         email: "admin@gmail.com",
@@ -11,8 +21,10 @@ module.exports = {
         lastName: "",
         address: "vietnam",
         gender: 1,
-        typeRole: "Role",
-        keyRole: "R1",
+        phoneNumber: "0123456",
+        image: "",
+        roleId: "admin",
+        positionId: "cc",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
