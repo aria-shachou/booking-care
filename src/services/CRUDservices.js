@@ -46,8 +46,55 @@ const getAllUser = () => {
     }
   });
 };
+const getUserInfoById = (userId) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const user = await db.User.findOne({
+        where: {
+          id: userId,
+        },
+        raw: true,
+      });
+      if (user) {
+        resolve(user);
+      } else {
+        resolve([]);
+      }
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
 
+const updateUserData = (data) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const user = await db.User.findOne({
+        where: {
+          id: data.id,
+        },
+      });
+      if (user) {
+        await user.set({
+          email: data.email,
+          firstName: data.firstName,
+          lastName: data.lastName,
+          address: data.address,
+        });
+        await user.save();
+        const allUser = await db.User.findAll();
+        resolve(allUser);
+      } else {
+        resolve();
+      }
+    } catch (e) {
+      reject(e);
+    }
+  });
+};
 module.exports = {
   createNewUser,
   getAllUser,
+  getUserInfoById,
+  updateUserData,
 };
