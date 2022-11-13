@@ -8,8 +8,9 @@ const initWebRoutes = (app) => {
   router.post("/post-crud", homeController.postCRUD);
   router.get("/get-crud", homeController.displayGetCRUD);
   router.get("/edit-crud", homeController.getEditCRUD);
-  router.get("/delete-crud", homeController.getDeleteCRUD);
+
   router.post("/put-crud", homeController.putCRUD);
+  router.get("/delete-crud", homeController.deleteCRUD);
   return app.use("/", router);
 };
 
